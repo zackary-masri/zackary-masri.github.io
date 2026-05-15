@@ -123,6 +123,30 @@
       margin-bottom: 1.25rem;
     }
 
+    .name-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.name-row h1 {
+  margin-bottom: 0;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .avatar { width: 52px; height: 52px; }
+}
+
     .hero .role {
       font-size: 1.0625rem;
       color: var(--muted);
@@ -434,10 +458,10 @@
     <header class="hero reveal">
       <div class="status"><span class="dot"></span> zackarymasri@gmail.com</div>
       <div class="status"><span class="dot"></span> +1(647)-667-7048</div>
-      <h1>Zackary Masri</h1>
       <div class="name-row">
-  <img src="me.jpg" alt="Your Name" class="avatar" />
-  <h1>Your Name</h1>
+      <img src="me.jpg" alt="Your Name" class="avatar" />
+      <h1>Zackary Masri</h1>
+      
 </div>
       <p class="role">
         <span class="hl">ML/Software engineer and data professional</span> based in <span class="hl">Toronto, Ontario</span>. Currently working on web applications and exploring developer tooling. Previously at <span class="hl">Company Name</span>.
