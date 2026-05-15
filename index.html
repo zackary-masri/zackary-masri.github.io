@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Personal site of Your Name." />
+  <title>Zackary Masri — Portfolio</title>
+  <meta name="description" content="Personal site of Zackary Masri." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -57,18 +57,11 @@
     /* — Top bar — */
     .topbar {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       padding-bottom: 5rem;
       flex-wrap: wrap;
       gap: 1rem;
-    }
-
-    .topbar .brand {
-      font-weight: 500;
-      color: var(--ink);
-      font-size: 0.9375rem;
-      letter-spacing: -0.005em;
     }
 
     .topbar nav {
@@ -92,6 +85,13 @@
       padding-bottom: 4rem;
     }
 
+    .hero .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
     .hero .status {
       display: inline-flex;
       align-items: center;
@@ -102,7 +102,6 @@
       padding: 0.3rem 0.65rem;
       border: 1px solid var(--rule);
       border-radius: 999px;
-      margin-bottom: 2rem;
       background: var(--bg-elev);
     }
 
@@ -113,6 +112,22 @@
       box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
     }
 
+    .name-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--rule);
+      flex-shrink: 0;
+    }
+
     .hero h1 {
       font-family: var(--sans);
       font-weight: 600;
@@ -120,32 +135,7 @@
       line-height: 1.1;
       letter-spacing: -0.02em;
       color: var(--ink);
-      margin-bottom: 1.25rem;
     }
-
-    .name-row {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 1.25rem;
-}
-
-.name-row h1 {
-  margin-bottom: 0;
-}
-
-.avatar {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--rule);
-  flex-shrink: 0;
-}
-
-@media (max-width: 600px) {
-  .avatar { width: 52px; height: 52px; }
-}
 
     .hero .role {
       font-size: 1.0625rem;
@@ -432,6 +422,8 @@
       .topbar { padding-bottom: 3rem; }
       .topbar nav { gap: 1.25rem; }
       .hero { padding-bottom: 2.5rem; }
+      .avatar { width: 56px; height: 56px; }
+      .name-row { gap: 1rem; }
       section { padding: 2.5rem 0; }
       .project { grid-template-columns: 3.5rem 1fr auto; gap: 1rem; }
       .skill-row { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.875rem 0; }
@@ -445,7 +437,6 @@
 
     <!-- Top bar -->
     <div class="topbar reveal">
-      <span class="brand">Zackary Masri</span>
       <nav>
         <a href="#about">About</a>
         <a href="#work">Work</a>
@@ -456,13 +447,16 @@
 
     <!-- Hero -->
     <header class="hero reveal">
-      <div class="status"><span class="dot"></span> zackarymasri@gmail.com</div>
-      <div class="status"><span class="dot"></span> +1(647)-667-7048</div>
+      <div class="status-row">
+        <div class="status"><span class="dot"></span> zackarymasri@gmail.com</div>
+        <div class="status"><span class="dot"></span> +1 (647) 667-7048</div>
+      </div>
+
       <div class="name-row">
-      <img src="me.jpg" alt="Your Name" class="avatar" />
-      <h1>Zackary Masri</h1>
-      
-</div>
+        <img src="me.jpg" alt="Zackary Masri" class="avatar" />
+        <h1>Zackary Masri</h1>
+      </div>
+
       <p class="role">
         <span class="hl">ML/Software engineer and data professional</span> based in <span class="hl">Toronto, Ontario</span>. Currently working on web applications and exploring developer tooling. Previously at <span class="hl">Company Name</span>.
       </p>
@@ -559,7 +553,7 @@
         <h2>Contact</h2>
       </div>
       <ul class="contact-list">
-        <li><a href="mailto:you@example.com">
+        <li><a href="mailto:zackarymasri@gmail.com">
           <span class="label">Email</span>
           <span class="val">zackarymasri@gmail.com</span>
           <span class="arrow">↗</span>
