@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Personal site of Your Name." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #0d1014;
+      --bg-elev:   #14181f;
+      --ink:       #e8eaed;
+      --ink-soft:  #c4c8d0;
+      --muted:     #7a8190;
+      --dim:       #3a4150;
+      --rule:      #1e242e;
+      --rule-soft: #161b23;
+      --accent:    #6ea8ff;
+      --accent-dim: rgba(110, 168, 255, 0.10);
+
+      --sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+      --max: 720px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink-soft);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      padding: 0 1.5rem;
+      min-height: 100vh;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 5rem 0 7rem;
+    }
+
+    a { color: inherit; }
+
+    /* — Top bar — */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .topbar .brand {
+      font-weight: 500;
+      color: var(--ink);
+      font-size: 0.9375rem;
+      letter-spacing: -0.005em;
+    }
+
+    .topbar nav {
+      display: flex;
+      gap: 1.75rem;
+    }
+
+    .topbar nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.15s ease;
+    }
+
+    .topbar nav a:hover {
+      color: var(--ink);
+    }
+
+    /* — Hero — */
+    .hero {
+      padding-bottom: 4rem;
+    }
+
+    .hero .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding: 0.3rem 0.65rem;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      margin-bottom: 2rem;
+      background: var(--bg-elev);
+    }
+
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+    }
+
+    .hero h1 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: clamp(2.25rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero .role {
+      font-size: 1.0625rem;
+      color: var(--muted);
+      max-width: 36rem;
+      line-height: 1.65;
+    }
+
+    .hero .role .hl {
+      color: var(--ink);
+    }
+
+    /* — Sections — */
+    section {
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-head .num {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .section-head h2 {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--ink);
+      letter-spacing: -0.005em;
+    }
+
+    /* — About — */
+    .about p {
+      font-size: 0.9375rem;
+      max-width: 36rem;
+      margin-bottom: 1.125rem;
+      line-height: 1.7;
+    }
+
+    .about p:last-child { margin-bottom: 0; }
+
+    /* — Projects — */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 4rem 1fr auto;
+      gap: 1.5rem;
+      align-items: baseline;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s ease;
+      margin: 0 -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border-radius: 4px;
+    }
+
+    .project:hover {
+      background: var(--bg-elev);
+    }
+
+    .project:hover .project-title {
+      color: var(--accent);
+    }
+
+    .project .year {
+      font-family: var(--mono);
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    .project-info {
+      min-width: 0;
+    }
+
+    .project .project-title {
+      font-weight: 500;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      transition: color 0.15s ease;
+    }
+
+    .project .project-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .project .arrow {
+      color: var(--muted);
+      font-size: 0.875rem;
+      transition: transform 0.2s ease, color 0.15s ease;
+    }
+
+    .project:hover .arrow {
+      transform: translate(2px, -2px);
+      color: var(--accent);
+    }
+
+    /* — Experience / Skills — */
+    .skill-row {
+      display: grid;
+      grid-template-columns: 8rem 1fr;
+      gap: 2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+      align-items: baseline;
+    }
+
+    .skill-row:last-child { border-bottom: none; }
+
+    .skill-row .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .skill-row .items {
+      font-size: 0.9375rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    /* — Resume — */
+    .resume-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.125rem;
+      background: var(--bg-elev);
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn .arrow {
+      font-size: 0.8125rem;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover .arrow {
+      transform: translateY(2px);
+    }
+
+    .resume-note {
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    /* — Contact — */
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-list li {
+      border-bottom: 1px solid var(--rule-soft);
+    }
+
+    .contact-list li:last-child {
+      border-bottom: none;
+    }
+
+    .contact-list a {
+      display: grid;
+      grid-template-columns: 8rem 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 0;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s ease;
+      margin: 0 -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border-radius: 4px;
+    }
+
+    .contact-list a:hover {
+      background: var(--bg-elev);
+    }
+
+    .contact-list a:hover .val {
+      color: var(--accent);
+    }
+
+    .contact-list .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .contact-list .val {
+      font-size: 0.9375rem;
+      color: var(--ink);
+      transition: color 0.15s ease;
+    }
+
+    .contact-list .arrow {
+      color: var(--muted);
+      font-size: 0.875rem;
+      transition: transform 0.2s ease, color 0.15s ease;
+    }
+
+    .contact-list a:hover .arrow {
+      transform: translate(2px, -2px);
+      color: var(--accent);
+    }
+
+    /* — Footer — */
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      border-top: 1px solid var(--rule);
+      margin-top: 4rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* — Reveal animation — */
+    .reveal {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: reveal 0.7s ease forwards;
+    }
+
+    .reveal:nth-child(1) { animation-delay: 0.05s; }
+    .reveal:nth-child(2) { animation-delay: 0.15s; }
+
+    @keyframes reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* — Selection — */
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* — Mobile — */
+    @media (max-width: 600px) {
+      main { padding: 3rem 0 5rem; }
+      .topbar { padding-bottom: 3rem; }
+      .topbar nav { gap: 1.25rem; }
+      .hero { padding-bottom: 2.5rem; }
+      section { padding: 2.5rem 0; }
+      .project { grid-template-columns: 3.5rem 1fr auto; gap: 1rem; }
+      .skill-row { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.875rem 0; }
+      .contact-list a { grid-template-columns: 6rem 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- Top bar -->
+    <div class="topbar reveal">
+      <span class="brand">Your Name</span>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
+    <!-- Hero -->
+    <header class="hero reveal">
+      <div class="status"><span class="dot"></span> Available for opportunities</div>
+      <h1>Your Name</h1>
+      <p class="role">
+        <span class="hl">Software engineer</span> based in <span class="hl">Hamilton, Ontario</span>. Currently working on web applications and exploring developer tooling. Previously at <span class="hl">Company Name</span>.
+      </p>
+    </header>
+
+    <!-- 01 — About -->
+    <section id="about" class="about">
+      <div class="section-head">
+        <span class="num">01</span>
+        <h2>About</h2>
+      </div>
+      <p>Write a paragraph about yourself here — where you're from, what you do, and what you care about professionally. Keep it focused and direct; this is the part recruiters and collaborators read first.</p>
+      <p>A second paragraph can cover your current focus, what you're learning, and what kinds of work you're looking to take on next. Close with one detail that reflects your perspective so the reader gets a sense of you beyond the resume.</p>
+    </section>
+
+    <!-- 02 — Selected Work -->
+    <section id="work">
+      <div class="section-head">
+        <span class="num">02</span>
+        <h2>Selected Work</h2>
+      </div>
+
+      <div class="project-list">
+        <a href="#" class="project">
+          <span class="year">2026</span>
+          <div class="project-info">
+            <div class="project-title">Project Name One</div>
+            <div class="project-desc">One-line summary of the problem and your role.</div>
+          </div>
+          <span class="arrow">↗</span>
+        </a>
+
+        <a href="#" class="project">
+          <span class="year">2025</span>
+          <div class="project-info">
+            <div class="project-title">Project Name Two</div>
+            <div class="project-desc">A concise sentence about the outcome or impact.</div>
+          </div>
+          <span class="arrow">↗</span>
+        </a>
+
+        <a href="#" class="project">
+          <span class="year">2025</span>
+          <div class="project-info">
+            <div class="project-title">Project Name Three</div>
+            <div class="project-desc">Brief description of what you built and why.</div>
+          </div>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 03 — Experience / Skills -->
+    <section id="experience">
+      <div class="section-head">
+        <span class="num">03</span>
+        <h2>Experience</h2>
+      </div>
+
+      <div class="skill-row">
+        <span class="label">Languages</span>
+        <span class="items">JavaScript, TypeScript, Python</span>
+      </div>
+      <div class="skill-row">
+        <span class="label">Frameworks</span>
+        <span class="items">React, Next.js, Node.js</span>
+      </div>
+      <div class="skill-row">
+        <span class="label">Tools</span>
+        <span class="items">Git, Docker, Figma, Linux</span>
+      </div>
+      <div class="skill-row">
+        <span class="label">Currently</span>
+        <span class="items">Exploring Rust and systems programming</span>
+      </div>
+    </section>
+
+    <!-- 04 — Resume -->
+    <section id="resume">
+      <div class="section-head">
+        <span class="num">04</span>
+        <h2>Resume</h2>
+      </div>
+      <div class="resume-row">
+        <a href="resume.pdf" class="btn" download>Download PDF <span class="arrow">↓</span></a>
+        <span class="resume-note">Updated November 2026</span>
+      </div>
+    </section>
+
+    <!-- 05 — Contact -->
+    <section id="contact">
+      <div class="section-head">
+        <span class="num">05</span>
+        <h2>Contact</h2>
+      </div>
+      <ul class="contact-list">
+        <li><a href="mailto:you@example.com">
+          <span class="label">Email</span>
+          <span class="val">you@example.com</span>
+          <span class="arrow">↗</span>
+        </a></li>
+        <li><a href="https://github.com/yourusername">
+          <span class="label">GitHub</span>
+          <span class="val">@yourusername</span>
+          <span class="arrow">↗</span>
+        </a></li>
+        <li><a href="https://linkedin.com/in/yourusername">
+          <span class="label">LinkedIn</span>
+          <span class="val">/in/yourusername</span>
+          <span class="arrow">↗</span>
+        </a></li>
+        <li><a href="https://twitter.com/yourusername">
+          <span class="label">Twitter</span>
+          <span class="val">@yourusername</span>
+          <span class="arrow">↗</span>
+        </a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>© 2026 Your Name</span>
+    <span>Hamilton, Ontario</span>
+  </footer>
+
+</body>
+</html>
