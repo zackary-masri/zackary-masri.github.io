@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zackary Masri — Portfolio</title>
+  <meta name="description" content="Personal site of Zackary Masri." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #0d1014;
+      --bg-elev:   #14181f;
+      --ink:       #e8eaed;
+      --ink-soft:  #c4c8d0;
+      --muted:     #7a8190;
+      --dim:       #3a4150;
+      --rule:      #1e242e;
+      --rule-soft: #161b23;
+      --accent:    #6ea8ff;
+      --accent-dim: rgba(110, 168, 255, 0.10);
+
+      --sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+      --max: 880px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink-soft);
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      padding: 0 1.5rem;
+      min-height: 100vh;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3rem 0 7rem;
+    }
+
+    a { color: inherit; }
+
+    /* — Top nav — */
+    .topnav {
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .topnav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      padding: 0.25rem 0.6rem;
+      transition: color 0.15s ease;
+    }
+
+    .topnav a:hover {
+      color: var(--ink);
+    }
+
+    /* — Contact bar — */
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 4rem;
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    .contact-bar .item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.15s ease;
+    }
+
+    .contact-bar a.item:hover {
+      color: var(--accent);
+    }
+
+    .contact-bar .icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      stroke: currentColor;
+      stroke-width: 1.75;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* — Hero — */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 3rem;
+      align-items: start;
+      padding-bottom: 4rem;
+    }
+
+    .hero-text h1 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: clamp(2.25rem, 5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-text .role {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      max-width: 36rem;
+      line-height: 1.7;
+    }
+
+    .hero-text .role .hl {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--rule);
+      box-shadow: 0 0 0 4px var(--bg-elev);
+    }
+
+    /* — Sections — */
+    section {
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-head .num {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .section-head h2 {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--ink);
+      letter-spacing: -0.005em;
+    }
+
+    /* — Experience / Education entries — */
+    .entry {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 2rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+    }
+
+    .entry:last-child { border-bottom: none; }
+
+    .entry .when {
+      font-family: var(--mono);
+      font-size: 0.8125rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      padding-top: 0.15rem;
+    }
+
+    .entry .role-title {
+      font-weight: 500;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .entry .org {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .entry .desc {
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    /* — Projects — */
+    .project {
+      display: grid;
+      grid-template-columns: 4rem 1fr auto;
+      gap: 1.5rem;
+      align-items: baseline;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s ease;
+      margin: 0 -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border-radius: 4px;
+    }
+
+    .project:hover { background: var(--bg-elev); }
+    .project:hover .project-title { color: var(--accent); }
+    .project:last-of-type { border-bottom: 1px solid var(--rule-soft); }
+
+    .project .year {
+      font-family: var(--mono);
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    .project-info { min-width: 0; }
+
+    .project .project-title {
+      font-weight: 500;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      transition: color 0.15s ease;
+    }
+
+    .project .project-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .project .arrow {
+      color: var(--muted);
+      font-size: 0.875rem;
+      transition: transform 0.2s ease, color 0.15s ease;
+    }
+
+    .project:hover .arrow {
+      transform: translate(2px, -2px);
+      color: var(--accent);
+    }
+
+    /* — Two-column rows (Skills, Languages, Interests) — */
+    .row {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule-soft);
+      align-items: baseline;
+    }
+
+    .row:last-child { border-bottom: none; }
+
+    .row .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .row .items {
+      font-size: 0.9375rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    /* — Tag pills — */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      padding: 0.25rem 0.65rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+    }
+
+    /* — Contact section — */
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-list li {
+      border-bottom: 1px solid var(--rule-soft);
+    }
+
+    .contact-list li:last-child { border-bottom: none; }
+
+    .contact-list a {
+      display: grid;
+      grid-template-columns: 7rem 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 0;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s ease;
+      margin: 0 -1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      border-radius: 4px;
+    }
+
+    .contact-list a:hover { background: var(--bg-elev); }
+    .contact-list a:hover .val { color: var(--accent); }
+    .contact-list a:hover .arrow { transform: translate(2px, -2px); color: var(--accent); }
+
+    .contact-list .label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .contact-list .val {
+      font-size: 0.9375rem;
+      color: var(--ink);
+      transition: color 0.15s ease;
+    }
+
+    .contact-list .arrow {
+      color: var(--muted);
+      font-size: 0.875rem;
+      transition: transform 0.2s ease, color 0.15s ease;
+    }
+
+    /* — Footer — */
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8125rem;
+      color: var(--muted);
+      border-top: 1px solid var(--rule);
+      margin-top: 4rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* — Reveal animation — */
+    .reveal {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: reveal 0.7s ease forwards;
+    }
+
+    .reveal:nth-child(1) { animation-delay: 0.05s; }
+    .reveal:nth-child(2) { animation-delay: 0.15s; }
+    .reveal:nth-child(3) { animation-delay: 0.25s; }
+
+    @keyframes reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    /* — Mobile — */
+    @media (max-width: 700px) {
+      main { padding: 2rem 0 5rem; }
+      .topnav { justify-content: flex-start; gap: 0.25rem; }
+      .topnav a { padding: 0.25rem 0.4rem; font-size: 0.8125rem; }
+      .contact-bar { gap: 0.75rem 1.5rem; margin-bottom: 2.5rem; }
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero-image {
+        order: -1;
+        justify-content: flex-start;
+      }
+      .avatar { width: 110px; height: 110px; }
+      section { padding: 2.5rem 0; }
+      .entry { grid-template-columns: 1fr; gap: 0.5rem; }
+      .entry .when { padding-top: 0; }
+      .project { grid-template-columns: 3.5rem 1fr auto; gap: 1rem; }
+      .row { grid-template-columns: 1fr; gap: 0.4rem; padding: 0.875rem 0; }
+      .contact-list a { grid-template-columns: 6rem 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- Top nav -->
+    <nav class="topnav reveal">
+      <a href="#about">About</a>
+      <a href="#work">Work Experience</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#languages">Languages</a>
+      <a href="#interests">Interests</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Contact bar with icons -->
+    <div class="contact-bar reveal">
+      <a class="item" href="mailto:zackarymasri@gmail.com">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        zackarymasri@gmail.com
+      </a>
+      <a class="item" href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">
+        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 17v-7"/></svg>
+        linkedin.com/in/yourusername
+      </a>
+      <span class="item">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Toronto, Ontario
+      </span>
+      <a class="item" href="tel:+16476677048">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +1 (647) 667-7048
+      </a>
+    </div>
+
+    <!-- Hero: name + about on left, profile pic on right -->
+    <header id="about" class="hero reveal">
+      <div class="hero-text">
+        <h1>Zackary Masri</h1>
+        <p class="role">
+          <span class="hl">ML/Software engineer and data professional</span> based in Toronto, Ontario. Currently working on web applications and machine learning systems, with interests in developer tooling and data infrastructure. Open to new opportunities and collaborations.
+        </p>
+      </div>
+      <div class="hero-image">
+        <img src="me.jpg" alt="Zackary Masri" class="avatar" />
+      </div>
+    </header>
+
+    <!-- 01 — Work Experience -->
+    <section id="work">
+      <div class="section-head">
+        <span class="num">01</span>
+        <h2>Work Experience</h2>
+      </div>
+
+      <div class="entry">
+        <span class="when">2024 — Now</span>
+        <div>
+          <div class="role-title">Job Title</div>
+          <div class="org">Company Name · Toronto, ON</div>
+          <p class="desc">One or two lines on what you did, owned, or shipped. Quantify outcomes where you can — improved X by Y%, shipped Z to N users, etc.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <span class="when">2022 — 2024</span>
+        <div>
+          <div class="role-title">Previous Role</div>
+          <div class="org">Previous Company · Toronto, ON</div>
+          <p class="desc">Brief description of your responsibilities and key accomplishments. Keep it focused on the most relevant work.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — Education -->
+    <section id="education">
+      <div class="section-head">
+        <span class="num">02</span>
+        <h2>Education</h2>
+      </div>
+
+      <div class="entry">
+        <span class="when">2020 — 2024</span>
+        <div>
+          <div class="role-title">Degree, Major</div>
+          <div class="org">University Name · City, Province</div>
+          <p class="desc">Relevant coursework, honors, GPA, thesis topic, or notable activities. Anything that hiring managers should know.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — Projects -->
+    <section id="projects">
+      <div class="section-head">
+        <span class="num">03</span>
+        <h2>Projects</h2>
+      </div>
+
+      <a href="#" class="project">
+        <span class="year">2026</span>
+        <div class="project-info">
+          <div class="project-title">Project Name One</div>
+          <div class="project-desc">One-line summary of the problem and what you built.</div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <a href="#" class="project">
+        <span class="year">2025</span>
+        <div class="project-info">
+          <div class="project-title">Project Name Two</div>
+          <div class="project-desc">A concise sentence about the outcome or impact.</div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <a href="#" class="project">
+        <span class="year">2025</span>
+        <div class="project-info">
+          <div class="project-title">Project Name Three</div>
+          <div class="project-desc">Brief description of what you built and why.</div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+    </section>
+
+    <!-- 04 — Skills -->
+    <section id="skills">
+      <div class="section-head">
+        <span class="num">04</span>
+        <h2>Skills</h2>
+      </div>
+
+      <div class="row">
+        <span class="label">Languages</span>
+        <span class="items">Python, JavaScript, TypeScript, SQL</span>
+      </div>
+      <div class="row">
+        <span class="label">ML / Data</span>
+        <span class="items">PyTorch, TensorFlow, scikit-learn, pandas, NumPy</span>
+      </div>
+      <div class="row">
+        <span class="label">Web</span>
+        <span class="items">React, Next.js, Node.js, FastAPI</span>
+      </div>
+      <div class="row">
+        <span class="label">Tools</span>
+        <span class="items">Git, Docker, AWS, Linux, PostgreSQL</span>
+      </div>
+    </section>
+
+    <!-- 05 — Languages -->
+    <section id="languages">
+      <div class="section-head">
+        <span class="num">05</span>
+        <h2>Languages</h2>
+      </div>
+
+      <div class="row">
+        <span class="label">English</span>
+        <span class="items">Native</span>
+      </div>
+      <div class="row">
+        <span class="label">Arabic</span>
+        <span class="items">Conversational</span>
+      </div>
+      <div class="row">
+        <span class="label">French</span>
+        <span class="items">Basic</span>
+      </div>
+    </section>
+
+    <!-- 06 — Interests -->
+    <section id="interests">
+      <div class="section-head">
+        <span class="num">06</span>
+        <h2>Interests</h2>
+      </div>
+
+      <div class="tags">
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Developer Tools</span>
+        <span class="tag">Open Source</span>
+        <span class="tag">Chess</span>
+        <span class="tag">Photography</span>
+        <span class="tag">Reading</span>
+      </div>
+    </section>
+
+    <!-- 07 — Contact -->
+    <section id="contact">
+      <div class="section-head">
+        <span class="num">07</span>
+        <h2>Contact</h2>
+      </div>
+      <ul class="contact-list">
+        <li><a href="mailto:zackarymasri@gmail.com">
+          <span class="label">Email</span>
+          <span class="val">zackarymasri@gmail.com</span>
+          <span class="arrow">↗</span>
+        </a></li>
+        <li><a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">
+          <span class="label">LinkedIn</span>
+          <span class="val">/in/yourusername</span>
+          <span class="arrow">↗</span>
+        </a></li>
+        <li><a href="https://github.com/yourusername" target="_blank" rel="noopener">
+          <span class="label">GitHub</span>
+          <span class="val">@yourusername</span>
+          <span class="arrow">↗</span>
+        </a></li>
+        <li><a href="tel:+16476677048">
+          <span class="label">Phone</span>
+          <span class="val">+1 (647) 667-7048</span>
+          <span class="arrow">↗</span>
+        </a></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>© 2026 Zackary Masri</span>
+    <span>Toronto, Ontario</span>
+  </footer>
+
+</body>
+</html>
